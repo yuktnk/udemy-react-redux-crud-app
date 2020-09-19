@@ -7,10 +7,12 @@ import reducer from './reducers'
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(reducer) //App内の全てのStateを集約する
+//App内の全てのStateを集約する
+const store = createStore(reducer)
 
 
 ReactDOM.render(
+  // storeがアプリケーション内のどのコンポーネントからも参照できるようにする記述
   <Provider store={store}>
     <App />
   </Provider>,

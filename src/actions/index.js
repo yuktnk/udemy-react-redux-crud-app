@@ -10,12 +10,12 @@ export const DECREMENT = 'DECREMENT'
 // Viewを担当するコンポーネントで利用するためexportする
 export const increment = () => {
   return {
-    type: 'INCREMENT'
+    type: INCREMENT
   }
 }
 export const decrement = () => {
   return {
-    type: 'DECREMENT'
+    type: DECREMENT
   }
 }
 // これらは、リファクタリングできる

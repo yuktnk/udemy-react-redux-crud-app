@@ -12,6 +12,5 @@ export default (state = initialState, action) => {
       return { value: state.value - 1 }
     default:
       return state
-
   }
 }

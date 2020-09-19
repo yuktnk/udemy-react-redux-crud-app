@@ -1,7 +1,7 @@
 import { INCREMENT, DECREMENT } from '../actions';
 
 const initialState = {
-  valur: 0
+  value: 0
 }
 
 export default (state = initialState, action) => {

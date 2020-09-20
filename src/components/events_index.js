@@ -3,6 +3,7 @@ import React, { Component }from 'react';
 // 今まで作成したStateやActionと、コンポーネントとの関連付けを行って、
 // ViewのEventで状態を遷移させて、遷移後の状態を画面に再描画する。
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 // ActionCreatorをimportする
 import { readEvents } from '../actions'
@@ -11,22 +12,37 @@ class EventsIndex extends Component {
   componentDidMount() {
     this.props.readEvents()
   }
+
+  renderEvents() {
+    return _.map(this.props.events, event =>(
+      <tr key={event.id}>
+        <td>{event.id}</td>
+        <td>{event.title}</td>
+        <td>{event.body}</td>
+      </tr>
+    ))
+  }
+
   render() {
-    const props = this.props  // 状態やActionを渡すため変数に入れる？
     return(
-      <React.Fragment>
-        {/* reducer内のcountのvalueの値 ↓ */}
-        <div>value: { props.value }</div>
-        {/* ActionCreatorからimportした関数 ↓ */}
-        <button onClick={props.increment}>+1</button>
-        <button onClick={props.decrement}>-1</button>
-      </React.Fragment>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Iitle</th>
+            <th>Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.renderEvents()}
+        </tbody>
+      </table>
     )
   }
 }
 
 // src/reducers/index.jsのexport default combineReducers({ count })で指定している。
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({ events: state.events })
 const mapDispatchToProps = ({ readEvents })
 
 // ★ StateとActionをコンポーネントに関連付けるための重要な記述 ★

@@ -4,6 +4,7 @@ import React, { Component }from 'react';
 // ViewのEventで状態を遷移させて、遷移後の状態を画面に再描画する。
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Link } from 'react-router-dom'
 
 // ActionCreatorをimportする
 import { readEvents } from '../actions'
@@ -25,18 +26,22 @@ class EventsIndex extends Component {
 
   render() {
     return(
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Iitle</th>
-            <th>Body</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.renderEvents()}
-        </tbody>
-      </table>
+      <React.Fragment>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Iitle</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderEvents()}
+          </tbody>
+        </table>
+
+        <Link to="/events/new">New Event</Link>
+      </React.Fragment>
     )
   }
 }

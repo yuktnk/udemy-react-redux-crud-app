@@ -5,9 +5,12 @@ import React, { Component }from 'react';
 import { connect } from 'react-redux';
 
 // ActionCreatorをimportする
-import { increment, decrement } from '../actions'
+import { readEvents } from '../actions'
 
 class EventsIndex extends Component {
+  componentDidMount() {
+    this.props.readEvents()
+  }
   render() {
     const props = this.props  // 状態やActionを渡すため変数に入れる？
     return(
@@ -23,8 +26,8 @@ class EventsIndex extends Component {
 }
 
 // src/reducers/index.jsのexport default combineReducers({ count })で指定している。
-const mapStateToProps = state => ({ value: state.count.value })
-const mapDispatchToProps = ({ increment, decrement })
+const mapStateToProps = state => ({})
+const mapDispatchToProps = ({ readEvents })
 
 // ★ StateとActionをコンポーネントに関連付けるための重要な記述 ★
 export default connect(mapStateToProps, mapDispatchToProps)(EventsIndex);

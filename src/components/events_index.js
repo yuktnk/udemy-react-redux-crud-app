@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 // ActionCreatorをimportする
 import { increment, decrement } from '../actions'
 
-class App extends Component {
+class EventsIndex extends Component {
   render() {
     const props = this.props  // 状態やActionを渡すため変数に入れる？
     return(
@@ -24,18 +24,9 @@ class App extends Component {
 
 // src/reducers/index.jsのexport default combineReducers({ count })で指定している。
 const mapStateToProps = state => ({ value: state.count.value })
-
-// const mapDispatchToProps = dispatch => ({  ・・・③
-//   increment: () => dispatch(increment()),  ・・・①
-//   decrement: () => dispatch(decrement()),  ・・・②
-// })
-// ①incrementをキーに、increment()関数を引数にもつdispatch関数を値に  
-// ②decrementをキーに、decrement()関数を引数にもつdispatch関数を値に  
-// ③定義したmapDispatchToPropを定義している。
-// リファクタリングした結果 ↓
 const mapDispatchToProps = ({ increment, decrement })
 
 // ★ StateとActionをコンポーネントに関連付けるための重要な記述 ★
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(EventsIndex);
 
 

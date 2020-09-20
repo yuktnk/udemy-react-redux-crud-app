@@ -4,7 +4,7 @@ import { createStore } from 'redux'; // Storeを作成するための関数を�
 import { Provider } from 'react-redux'; // 作成したStoreを全コンポーネントに渡すための機能を持つProviderという特殊なコンポーネントをインポート
 import './index.css';
 import reducer from './reducers'
-import App from './components/App';
+import EventsIndex from './components/events_index';
 import * as serviceWorker from './serviceWorker';
 
 //App内の全てのStateを集約する
@@ -14,7 +14,7 @@ const store = createStore(reducer)
 ReactDOM.render(
   // storeがアプリケーション内のどのコンポーネントからも参照できるようにする記述
   <Provider store={store}>
-    <App />
+    <EventsIndex />
   </Provider>,
   document.getElementById('root')
 );
